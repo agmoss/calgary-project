@@ -26,9 +26,10 @@ def config():
        config = json.load(f)
 
     db_default = config['default']
+    db_data = config['rental_data']
     secret_key = config['SECRET_KEY']
 
-    return {"default" : db_default, "key" : secret_key}
+    return {"default" : db_default, "data" : db_data ,"key" : secret_key}
 
 CONFIGS= config()
 
@@ -39,9 +40,11 @@ CONFIGS= config()
 SECRET_KEY = CONFIGS['key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
     'https://calgaryprojectazurewebsites.net',
     'calgaryproject.azurewebsites.net',
 ]
@@ -54,11 +57,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'corsheaders', # CORS headers
     'rental',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # CORS headers
+    'django.middleware.common.CommonMiddleware', # CORS headers
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -67,6 +72,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True # CORS headers
 
 ROOT_URLCONF = 'cpsite.urls'
 
@@ -95,6 +102,7 @@ WSGI_APPLICATION = 'cpsite.wsgi.application'
 
 DATABASES = {
     'default' : CONFIGS['default'],
+    'rental_data' : CONFIGS['data']
 }
 
 # Password validation
