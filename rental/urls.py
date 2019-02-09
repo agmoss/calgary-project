@@ -12,6 +12,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('data/', views.data, name = 'data'),
     path('map/', views.map, name = 'map'),
+    path('contact/', views.contact, name = 'contact'),
     path('api/pie_data',views.pie_data, name = 'pie_data'), 
     path('api/scatter_data',views.scatter_data, name = 'scatter_data'), 
     path('api/hist_data',views.hist_data, name = 'hist_data'), 

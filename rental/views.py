@@ -15,11 +15,6 @@ import pandas as pd
 import numpy as np
 
 
-def home_test(request):
-    """Renders the about page."""
-    return render(request, "rental/home_test.html")
-
-
 def home(request):
 
     content = {
@@ -68,6 +63,14 @@ def map(request):
     }
 
     return render(request,'rental/map.html',content)
+
+def contact(request):
+
+    content = {
+        'title' : 'Contact'
+    }
+
+    return render(request,'rental/contact.html',content)
 
 def pie_data(request):
     """ JSON API """
