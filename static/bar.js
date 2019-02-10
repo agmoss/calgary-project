@@ -126,5 +126,7 @@ Plotly.d3.json(domainName + 'api/scatter_data', function(data){
 
     itemSelector.addEventListener('change', updateSelection, false);
 
+    // Set the default selection ddl value
+    itemSelector.value = "Apartment";
 
 });

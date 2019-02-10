@@ -36,7 +36,7 @@ Plotly.d3.json(domainName + 'api/pie_data', function(data){
     };
 
     // Default 
-    setPlot('Condo');
+    setPlot('Apartment');
 
     // Actual plotting function 
     function setPlot(chosenItem) {
@@ -91,5 +91,8 @@ Plotly.d3.json(domainName + 'api/pie_data', function(data){
     }
 
     itemSelector.addEventListener('change', updateSelection, false);
+
+    // Set the default selection ddl value
+    itemSelector.value = "Apartment";
 
 });

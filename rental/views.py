@@ -81,7 +81,7 @@ def pie_data(request):
         .values('community','_type')
         .annotate(dcount=Count('community'))
         .order_by('-dcount')
-        .filter(position = 'active')
+        .filter(position = 'active',dcount__gte = 10)
         )
 
     return JsonResponse(data, safe=False)  
@@ -94,7 +94,7 @@ def scatter_data(request):
         .values('community','_type')
         .annotate(Avg('price'),dcount=Count('community')) # For filtering
         .order_by('-price__avg')
-        .filter(position = 'active')             
+        .filter(position = 'active',dcount__gte = 10)             
         )
 
     return JsonResponse(data, safe=False) 
@@ -114,11 +114,25 @@ def hist_data(request):
 def box_data(request):
     """ JSON API """
 
-    data = list(
-        RentalData.objects.using('rental_data')
-        .values('quadrant','price','_type')
-        .filter(position = 'active')
-        )
+    data = RentalData.objects.using('rental_data')
+    data = data.values('quadrant','price','_type')
+    data = data.filter(position = 'active')
+        
+    data = list(data)
+
+    #Rename quadrants
+    for n, i in enumerate(data):
+        for n,x in enumerate(i):
+            if i[x] == '':
+                i[x] = "Unspecified"
+            if (i[x] == 'Inner-City||SW') or (i[x] == 'SW||Inner-City'):
+                i[x] = 'SW-Central'
+            if (i[x] == 'Inner-City||NW') or (i[x] == 'NW||Inner-City'):
+                i[x] = 'NW-Central'
+            if (i[x] == 'Inner-City||SE') or (i[x] == 'SE||Inner-City'):
+                i[x] = 'SE-Central'
+            if (i[x] == 'Inner-City||NE') or (i[x] == 'NE||Inner-City'):
+                i[x] = 'NE-Central'
 
     return JsonResponse(data, safe=False)  
 

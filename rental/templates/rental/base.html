@@ -10,9 +10,9 @@
     <meta name="author" content="">
 
     {% if title.title %}
-      <title> {{ title.title }} - Rental Analytics </title>
+      <title> {{ title.title }} </title>
     {% else %}
-      <title>Rental Analytics</title>
+      <title>Calgary Project</title>
     {% endif %}
 
     <!-- Latest compiled and minified CSS -->
@@ -40,8 +40,12 @@
     <!-- Overrides-->
     <link rel="stylesheet" href="https://testcss.azureedge.net/static/custom.css" />
 
-    <!-- Custom Chart Formatting -->
-    <script src="https://testcss.azureedge.net/static/definitions.js" type = "text/javascript"></script> 
+    <!-- for local -->
+    <!-- {% load static %}
+    <script type = "text/javascript" src="{% static 'definitions.js' %}"></script> -->
+
+    <!-- Custom Chart Formatting and domain name mapping -->
+    <script src="https://testcss.azureedge.net/static/definitions.js" type = "text/javascript"></script>  
 
     <!-- Outlier function -->
     <script src="https://testcss.azureedge.net/static/filterOutliers.js" type = "text/javascript"></script> 

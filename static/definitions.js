@@ -19,3 +19,6 @@ var colorScheme = {
 }
 
 var domainName = "https://calgaryproject.azurewebsites.net/"
+
+//For local
+//var domainName = "http://127.0.0.1:8000/"
