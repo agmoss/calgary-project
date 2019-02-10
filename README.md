@@ -10,6 +10,13 @@ A carefully designed data enginerring/ETL process creates a cohesive story out o
 
 Data collection for this project is housed at the [Rental Data ETL](https://github.com/agmoss/Rental-Data-ETL) github project.
 
+
+# Screenshot
+>Part of the dashboard...
+
+![example](screenshot.png)
+
+
 # Development Status
 
 This project implements the principles of CI & CD. The latest development is housed at: http://calgaryproject.azurewebsites.net/
