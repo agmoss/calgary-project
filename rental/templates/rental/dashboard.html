@@ -76,6 +76,15 @@
     </div>
   </div>
 
+  <!--LinePlot-->
+  <div class="card mb-3">
+    <div class="card-header">Price Trends</div>
+    <div class="card-body">
+          <div id="lineplotdiv"></div>
+      </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+
   <!--BoxPlot-->
   <div class="card mb-3">
     <div class="card-header">Price Distribution per City Quadrant</div>
@@ -120,8 +129,8 @@
   <script src="https://testcss.azureedge.net/static/onResize.js" type = "text/javascript"></script> 
 
   <!-- for local -->
-  <!-- {% load static %}
-  <script type = "text/javascript" src="{% static 'bar.js' %}"></script> -->
+  {% load static %}
+  <script type = "text/javascript" src="{% static 'line.js' %}"></script> 
 
   <!-- Chart Scripts -->
   <script src="https://testcss.azureedge.net/static/bar.js" type = "text/javascript"></script>  

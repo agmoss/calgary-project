@@ -19,4 +19,5 @@ urlpatterns = [
     path('api/box_data',views.box_data, name = 'box_data'),    
     path('api/map_data',views.map_data, name = 'map_data'), 
     path('api/corr_data',views.corr_data, name = 'corr_data'), 
+    path('api/ts_data',views.ts_data, name = 'ts_data'),
 ]
