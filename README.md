@@ -4,9 +4,9 @@
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 
-The Calgary Project is a scalable, open source initiative for analyzing Calgary's rental market. Content is served from a series of independent cloud docker instances and static content API's. 
+The Calgary Project is a scalable, open source initiative for analyzing Calgary's rental market. Content is served from a series of independent cloud docker instances and custom CDN's. 
 
-A carefully designed data engineering/ETL process creates a cohesive story out of the raw data. Interactive analytics and visuals allow users to gain an accurate understanding of market trends, discrepancies, and opportunities. 
+A carefully designed data engineering/ETL process creates a cohesive story out of the raw data. Interactive analytics allow users to gain an accurate understanding of market trends, discrepancies, and opportunities. 
 
 Data collection for this project is housed at the [Rental Data ETL](https://github.com/agmoss/Rental-Data-ETL) GitHub project.
 

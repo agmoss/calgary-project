@@ -1,4 +1,4 @@
-Plotly.d3.json('http://127.0.0.1:8000/api/ts_data', function(data){
+Plotly.d3.json(domainName + 'api/ts_data', function(data){
 
   var traces = []
 
