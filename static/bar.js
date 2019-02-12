@@ -57,7 +57,7 @@ Plotly.d3.json(domainName + 'api/scatter_data', function(data){
         let layout = {
             yaxis: {
                 title: {
-                  text: 'Rent per Month',
+                  text: 'Average Rent per Month',
                   font: {
                     size: customPlotLayout.axis.axisTitleSize,
                     color: customPlotLayout.axis.axisColor,

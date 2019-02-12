@@ -174,3 +174,42 @@ def corr_data(request):
     }
 
     return JsonResponse(data, safe=False) 
+
+
+def ts_data(request):
+    """ JSON API """
+
+    df = pd.DataFrame(
+        list(
+            RentalData.objects.using('rental_data')
+            .values('retrieval_date','_type','price')
+            .filter(position = 'active')
+        )
+    )
+
+    df = df[df.price < df.price.quantile(.90)]
+
+    dfList = []
+
+    # Aggregate by type
+    for val in df['_type'].unique():
+
+        sliced = df.loc[df['_type'] == val]
+        
+        agg = sliced.groupby('retrieval_date').mean()  
+
+        agg = agg.rename(columns={'price': val})
+
+        dfList.append(agg)  
+
+    df = pd.concat(dfList, axis=1)
+
+    df = df[['Townhouse', 'House', 'Duplex', 'Apartment','Main Floor', 'Condo', 'Shared']]
+
+    df = df.dropna()
+
+    flat = df.to_dict('dict')
+
+    from django.core.serializers import serialize
+
+    return JsonResponse(flat, safe=False)
