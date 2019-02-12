@@ -1,4 +1,6 @@
 // Define plot divs for the Plotly functions and the resize event (maybe put this somewhere else)
+
+// Define plot divs for the Plotly functions and the resize event (maybe put this somewhere else)
 var bDiv = document.getElementById('scatterplotdiv')
 var pDiv = document.getElementById('pieplotdiv')
 var boxDiv = document.getElementById('boxplotdiv')
