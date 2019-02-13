@@ -1,4 +1,4 @@
-{% extends "rental/base.html"%}
+{% extends "rental/layout.html"%}
 {% block content %}
 
   <!-- Map-->
@@ -11,14 +11,24 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
       
-        <!-- {% load static %}
-        <script src="{% static "rental/map.js" %}" type="text/javascript"></script> -->
-        <script src="https://testcss.azureedge.net/static/map.js" type = "text/javascript"></script> 
+        <script src="https://rentalcontent.azureedge.net/static1/map.js" type = "text/javascript"></script> 
 
     </div>
 
     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     
   </div>
+
+  <script>
+  
+    $('#sidebarCollapse').on('click', function() {
+
+      //Not pretty but it works...
+      setTimeout(function() {window.dispatchEvent(new Event('resize')); }, 302);
+
+    })
+   
+  </script>
+
 
 {% endblock content %}

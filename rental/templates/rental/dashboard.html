@@ -1,37 +1,5 @@
-{% extends "rental/base.html"%}
+{% extends "rental/layout.html"%}
 {% block content %}
-
-  <!-- Icon Cards-->
-  <div class="row">
-    <div class="col-xl-3 col-sm-6 mb-3">
-      <div class="card text-white o-hidden h-100">  
-        <div class="card-body">
-
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-      <div class="card text-white o-hidden h-100">
-        <div class="card-body">
-
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-      <div class="card text-white o-hidden h-100">
-        <div class="card-body">
-
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-      <div class="card text-white o-hidden h-100">
-        <div class="card-body">
-
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class = "row">
 
@@ -44,7 +12,7 @@
             <div data-num="0">
               <div class = "row">
                 <div class="col-lg-12">
-                  <div id="scatterplotdiv"></div>
+                  <div class = "plotdiv" id="scatterplotdiv"></div>
                   <div class="control-row"> Type: <select class="selection"></select></div>
                 </div>
               </div>
@@ -64,7 +32,7 @@
           <div data-num="1">
             <div class = "row">
                 <div class="col-lg-12">
-                  <div id="pieplotdiv"></div>
+                  <div class = "plotdiv" id="pieplotdiv"></div>
                   <div class="control-row">Type: <select class="selection"></select></div>
                 </div>
               </div>
@@ -80,7 +48,7 @@
   <div class="card mb-3">
     <div class="card-header">Price Trends</div>
     <div class="card-body">
-          <div id="lineplotdiv"></div>
+          <div class = "plotdiv" id="lineplotdiv"></div>
       </div>
     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   </div>
@@ -90,7 +58,7 @@
     <div class="card-header">Price Distribution per City Quadrant</div>
     <div class="card-body">
         <div data-num="2">
-          <div id="boxplotdiv"></div>
+          <div class = "plotdiv" id="boxplotdiv"></div>
           <div class="control-row">Type: <select class="selection"></select>
           </div>
         </div>
@@ -106,10 +74,11 @@
           <div class="card-body">
 
                 <div data-num="3">
-                  <div id="distplotdiv"></div>
+                  <div class = "plotdiv" id="distplotdiv"></div>
                     <div class="control-row">Type: <select class="selection"></select></div>
                   </div>
                 </div>
+
               <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
             </div>
           </div>
@@ -118,32 +87,39 @@
             <div class="card mb-3">
               <div class="card-header">Correlation Map</div>
                 <div class="card-body">
-                  <div id = "heatdiv"></div> 
+                  <div class = "plotdiv" id = "heatdiv"></div> 
                 </div>
               <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
             </div>
           </div>
 
 
-  <!-- On Resize -->
-  <script src="https://testcss.azureedge.net/static/onResize.js" type = "text/javascript"></script> 
+  <script>
+  
+    $('#sidebarCollapse').on('click', function() {
 
-  <!-- for local -->
-  <!-- {% load static %}
-  <script type = "text/javascript" src="{% static 'line.js' %}"></script>  -->
+      //Not pretty but it works...
+      setTimeout(function() {  window.dispatchEvent(new Event('resize')); }, 302);
+
+    })
+ 
+  </script>
 
   <!-- Chart Scripts -->
-  <script src="https://testcss.azureedge.net/static/bar.js" type = "text/javascript"></script>  
+
+  <script src="https://rentalcontent.azureedge.net/static1/onResize.js" type = "text/javascript"></script>  
+
+  <script src="https://rentalcontent.azureedge.net/static1/bar.js" type = "text/javascript"></script>   
   
-  <script src="https://testcss.azureedge.net/static/pie.js" type = "text/javascript"></script>  
+  <script src="https://rentalcontent.azureedge.net/static1/pie.js" type = "text/javascript"></script>  
 
-  <script src="https://testcss.azureedge.net/static/line.js" type = "text/javascript"></script> 
+  <script src="https://rentalcontent.azureedge.net/static1/line.js" type = "text/javascript"></script> 
 
-  <script src="https://testcss.azureedge.net/static/hist.js" type = "text/javascript"></script> 
+  <script src="https://rentalcontent.azureedge.net/static1/hist.js" type = "text/javascript"></script> 
 
-  <script src="https://testcss.azureedge.net/static/box.js" type = "text/javascript"></script> 
+  <script src="https://rentalcontent.azureedge.net/static1/box.js" type = "text/javascript"></script> 
 
-  <script src="https://testcss.azureedge.net/static/heat.js" type = "text/javascript"></script>
+  <script src="https://rentalcontent.azureedge.net/static1/heat.js" type = "text/javascript"></script> 
 
 
 {% endblock content %}

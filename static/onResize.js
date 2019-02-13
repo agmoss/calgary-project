@@ -1,9 +1,11 @@
 // Define plot divs for the Plotly functions and the resize event (maybe put this somewhere else)
+// TODO: refactor
 var bDiv = document.getElementById('scatterplotdiv')
 var pDiv = document.getElementById('pieplotdiv')
 var boxDiv = document.getElementById('boxplotdiv')
 var hDiv = document.getElementById('distplotdiv')
 var heatDiv = document.getElementById('heatdiv')
+var lineDiv = document.getElementById('lineplotdiv')
 
 window.addEventListener("resize", function(){
 
@@ -30,6 +32,10 @@ window.addEventListener("resize", function(){
     Plotly.relayout(heatDiv, {
         width: 0.9 * heatDiv.innerWidth,
         height: 0.9 * heatDiv.innerHeight
-    })
-    
+    }) 
+
+    Plotly.relayout(lineDiv, {
+        width: 0.9 * lineDiv.innerWidth,
+        height: 0.9 * lineDiv.innerHeight
+    }) 
 });

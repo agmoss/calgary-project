@@ -100,7 +100,7 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
 
         var data = [trace1];
 
-        Plotly.newPlot(boxDiv, data, layout,{displayModeBar: false});
+        Plotly.newPlot('boxplotdiv', data, layout,{displayModeBar: false});
     };
 
     var innerContainer = document.querySelector('[data-num="2"'),

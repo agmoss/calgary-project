@@ -67,6 +67,6 @@ Plotly.d3.json(domainName + 'api/ts_data', function(data){
     autosize : true, // Important for responsiveness
   }
   
-  Plotly.newPlot('lineplotdiv', data, layout,{displayModeBar: false},{responsive: true});
+  Plotly.newPlot("lineplotdiv", data, layout,{displayModeBar: false},{responsive: true});
 
 });
