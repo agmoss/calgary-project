@@ -15,14 +15,6 @@ import pandas as pd
 import numpy as np
 
 
-def navtest(request):
-
-    content = {
-        'title' : 'Nav' 
-    }
-
-    return render(request,'rental/navtest.html', content)
-
 def home(request):
 
     content = {

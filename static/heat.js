@@ -49,6 +49,6 @@ Plotly.d3.json(domainName + 'api/corr_data', function(error,data){
 
       };
 
-    Plotly.newPlot('heatdiv', d, layout, {displayModeBar: false}); 
+    Plotly.newPlot(hDiv, d, layout, {displayModeBar: false}); 
 
 })

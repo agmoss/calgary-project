@@ -7,8 +7,6 @@ from rental import views
 
 urlpatterns = [
 
-    path('navtest/',views.navtest, name = 'navtest'),
-
     path('', views.home, name='home'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('analytics/', views.analytics, name='analytics'),

@@ -23,7 +23,7 @@
    
     <!-- for local -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'mainnav.css' %}" />
+    <link rel="stylesheet" href="{% static 'main.css' %}" />
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -39,13 +39,16 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 
     <!-- logo font -->
-    <link href="https://fonts.googleapis.com/css?family=Allan" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Allan" rel="stylesheet">  
 
      <!-- Custom styles -->
-    <link rel="stylesheet" href="https://testcss.azureedge.net/static/main.css" /> 
+    <!-- <link rel="stylesheet" href="https://testcss.azureedge.net/static/main.css" />  -->
 
     <!-- Overrides-->
-    <link rel="stylesheet" href="https://testcss.azureedge.net/static/custom.css" /> 
+     <!-- <link rel="stylesheet" href="https://testcss.azureedge.net/static/custom.css" />   -->
+
+     {% load static %}
+     <link rel="stylesheet" href="{% static 'custom.css' %}" />
 
     <!-- for local -->
     <!-- {% load static %}
@@ -71,27 +74,25 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Calgary Project</h3>
+                <h2 class = "logo">The Calgary Project</h2>
             </div>
 
             <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
+                <p>Free and Open Source</p>
+                <li>
+                <a class="nav-link" href="/">Home</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li>
+                <a class="nav-link" href="/map">Map</a>
+                </li>
+                <li>
+                <a class="nav-link " href="/about">About</a>
+                </li>
+                <li>
+                <a class="nav-link " href="/contact">Contact</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
@@ -107,20 +108,11 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
             </ul>
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="#" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="#" class="article">Back</a>
+                    <a href="https://github.com/agmoss" class="download">View source</a>
                 </li>
             </ul>
         </nav>
@@ -128,37 +120,21 @@
         <!-- Page Content  -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
+            <div class="container-fluid">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+    
+            </div>
 
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </nav>
+             <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    / {{ title }} 
+                </li>
+            </ol>
 
             <!-- Page Content -->
             {% block content %}
@@ -178,36 +154,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 
-
     <script type="text/javascript">
-
-        function changeplot(){
-
-               Plotly.relayout(bDiv, {
-                     width: bDiv.outerWidth
-                })
-
-            }
-            
-        function change(){
-            $('#sidebar, #content, #scatterplotdiv').toggleClass('active');
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        }
-        
-
+          
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
                 theme: "minimal"
             });
-
-            
+         
             $('#sidebarCollapse').on('click', function() {
-                $.when(change()).then(changeplot());
+                //$.when(change()).then(changeplot());
+                $('#sidebar, #content, #scatterplotdiv').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                
             });
             
         });
+
     </script>
 </body>
 
