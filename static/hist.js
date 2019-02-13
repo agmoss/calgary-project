@@ -98,7 +98,7 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
 
         var data = [trace1];
 
-        Plotly.newPlot('heatdiv', data, layout,{displayModeBar: false});
+        Plotly.newPlot(hDiv, data, layout,{displayModeBar: false});
     };
 
     var innerContainer = document.querySelector('[data-num="3"'),
