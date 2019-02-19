@@ -1,49 +1,8 @@
-.card {
-    background-color: rgb(22, 22, 22)
- } 
- .breadcrumb{
-    background-color: rgba(22, 22, 22, 0.5)
- }
 
- .special-card {  
-    background-color: rgba(22, 22, 22,0.4);
-    /* overflow:hidden;  */
-}
- 
- #map {
-    height: 90vh;
- }
- 
- .card-header{
-    font-size: 20px
- }
- 
- .navbar-brand {
-    font-weight: 600
- }
- 
- *{
-    font-family: 'Ubuntu', sans-serif;
- }
  
 
- #header {
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 900px;
-    overflow:hidden;  
- }
+
  
- h1{
-    font-size: 75px
- }
- 
- .container-fluid{
-    padding-bottom: 15px;
- }
- 
+
+
  
