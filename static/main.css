@@ -19,6 +19,27 @@ p {
     color: #999;
 }
 
+.navbar-nav {
+    margin: -20px;
+
+}
+
+/* navbar styles */
+
+.navbar {
+    margin-bottom: 10px;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.nav-item{
+    padding-left: 15px;
+}
+
 /* Card Styles */
 
 .card {

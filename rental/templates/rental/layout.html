@@ -57,8 +57,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <!-- for local -->
-    {% load static %}
-    <script type = "text/javascript" src="{% static 'definitions.js' %}"></script> 
+    <!-- {% load static %}
+    <script type = "text/javascript" src="{% static 'definitions.js' %}"></script>  -->
 
 
 </head>
@@ -101,35 +101,53 @@
                 </li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://www.linkedin.com/in/agmoss/" class="download">Authors LinkedIn</a>
-                </li>
-                <li>
-                    <a href="https://github.com/agmoss" class="download">Authors GitHub</a>
-                </li>
-
-            </ul>
         </nav>
+
+        <a href="https://github.com/agmoss">          
+            {% load static %}
+            <img src="{% static 'GitHub-Mark-Light-32px.png' %}" alt="Github" id = 'github'> 
+        </a>
+
+        <a href="https://www.linkedin.com/in/agmoss/">
+            {% load static %}
+            <img src="{% static 'In-White-34px-R.png' %}" alt="In" id = 'linkedin'> 
+        </a>
 
         <!-- Page Content  -->
         <div id="content">
 
-            <div class="container-fluid" id = "togglesidebardiv">
-
-                <button type="button" id="sidebarCollapse" class="btn">
+            <nav class="navbar navbar-expand-lg">
+  
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
                     <span>Toggle Sidebar</span>
                 </button>
-    
-            </div>
 
-             <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    / {{ title }} 
-                </li>
-            </ol>
+
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item">
+                            / {{ title }} 
+                    </li>
+                </ul>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="https://github.com/agmoss">          
+                                {% load static %}
+                                <img src="{% static 'GitHub-Mark-Light-32px.png' %}" alt="Github" id = 'github'> 
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://www.linkedin.com/in/agmoss/">
+                                {% load static %}
+                                <img src="{% static 'In-White-34px-R.png' %}" alt="In" id = 'linkedin'> 
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
 
             <!-- Page Content -->
             {% block content %}
@@ -137,6 +155,7 @@
             {% endblock %}
           
         </div>
+
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
