@@ -11,6 +11,7 @@ body {
     font-family: 'Allan', cursive;
 }
 
+
 p {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.1em;
@@ -21,7 +22,6 @@ p {
 
 .navbar-nav {
     margin: -20px;
-
 }
 
 /* navbar styles */
@@ -51,13 +51,13 @@ p {
 
 .special-card {  
     background-color: rgba(22, 22, 22,0.4);
-    /* overflow:hidden;  */
+    overflow:hidden; 
+    height: 100%;
 }
  
 .card-header{
     font-size: 20px
 } 
-
 
 h1.logo{
     font-size: 75px
@@ -203,7 +203,7 @@ a.article:hover {
     position: absolute;
     top: 0;
     right: 0;
-    color: white;
+    color: white; 
     background: url("bg-pattern.png"), #524397;
     background: url("bg-pattern.png"), -webkit-gradient(linear, right top, left top, from(#524397), to(#dc4024));
     background: url("bg-pattern.png"), linear-gradient(to left, #524397, #dc4024);
