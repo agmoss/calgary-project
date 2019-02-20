@@ -1,3 +1,5 @@
+/* Font styles */
+
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body {
     font-family: 'Ubuntu', sans-serif;
@@ -9,6 +11,7 @@ body {
     font-family: 'Allan', cursive;
 }
 
+
 p {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.1em;
@@ -16,6 +19,70 @@ p {
     line-height: 1.7em;
     color: #999;
 }
+
+.navbar-nav {
+    margin: -20px;
+}
+
+/* navbar styles */
+
+.navbar {
+    margin-bottom: 10px;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.nav-item{
+    padding-left: 15px;
+}
+
+/* Card Styles */
+
+.card {
+    background-color: rgb(22, 22, 22)
+} 
+ .breadcrumb{
+    background-color: rgba(22, 22, 22, 0.5)
+}
+
+.special-card {  
+    background-color: rgba(22, 22, 22,0.4);
+    overflow:hidden; 
+    height: 100%;
+}
+ 
+.card-header{
+    font-size: 20px
+} 
+
+h1.logo{
+    font-size: 75px
+}
+
+#header {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 900px;
+    overflow:hidden;  
+ } 
+
+
+ /* map styles */
+
+ #map {
+    height: 90vh;
+ } 
+
+
+ /* navigation styles */
 
 a,
 a:hover,
@@ -25,27 +92,6 @@ a:focus {
     transition: all 0.3s;
 }
 
-.navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-}
-
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
-}
 
 /* Sidebar styles */
 
@@ -64,6 +110,10 @@ a:focus {
     background: rgb(22, 22, 22);
     color: #fff;
     transition: all 0.3s; 
+}
+
+#togglesidebardiv{
+    padding-bottom: 15px;
 }
 
 #sidebar.active {
@@ -153,7 +203,7 @@ a.article:hover {
     position: absolute;
     top: 0;
     right: 0;
-    color: white;
+    color: white; 
     background: url("bg-pattern.png"), #524397;
     background: url("bg-pattern.png"), -webkit-gradient(linear, right top, left top, from(#524397), to(#dc4024));
     background: url("bg-pattern.png"), linear-gradient(to left, #524397, #dc4024);
