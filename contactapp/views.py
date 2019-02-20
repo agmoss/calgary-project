@@ -20,8 +20,7 @@ def emailView(request):
                 send_mail(subject, message, from_email, ['agordonmoss@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('success')
-    return render(request, "contactapp/contact.html", {'form': form})
 
-def successView(request):
-    return HttpResponse('Message has been sent! Thank you.')
+            return render(request, "contactapp/contact.html", {'form': form,'message':'Message has been sent! Thank you.'}) 
+
+    return render(request, "contactapp/contact.html", {'form': form})
