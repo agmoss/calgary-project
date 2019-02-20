@@ -18,6 +18,7 @@ from django.urls import include, path
 
 
 urlpatterns = [
-    path("", include("rental.urls")),
+    path('', include("rental.urls")),
+    path('', include('contactapp.urls')),
     
 ]
