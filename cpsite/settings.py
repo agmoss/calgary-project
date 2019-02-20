@@ -40,13 +40,13 @@ CONFIGS= config()
 SECRET_KEY = CONFIGS['key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost', 
     '127.0.0.1', 
-    'https://calgaryprojectazurewebsites.net',
-    'calgaryproject.azurewebsites.net',
+    'https://www.calgaryproject.net',
+    'calgaryproject.net',
 ]
 
 # Application definition
