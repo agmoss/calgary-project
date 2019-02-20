@@ -35,7 +35,8 @@ This is a work in progress and development is ongoing.
 
 ### Services
 * [Microsoft Azure](https://azure.microsoft.com/en-ca/) - Cloud service
-* [Docker](https://www.docker.com//) - Virtualization
+* [Docker](https://www.docker.com/) - Virtualization
+* [Mailgun](https://www.mailgun.com/) - Transactional Email API Service for Developers
 
 ## Contributing
 

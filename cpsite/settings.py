@@ -60,8 +60,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'corsheaders', # CORS headers
     'django.contrib.staticfiles',
-    'sendemail.apps.SendemailConfig', # Email
+    'contactapp.apps.ContactappConfig', # Email
     'rental',
+    'crispy_forms',# Form format
 ]
 
 MIDDLEWARE = [
@@ -149,8 +150,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 MAILGUN_ACCESS_KEY = CONFIGS['mg_api']
 MAILGUN_SERVER_NAME = 'mg.calgaryproject.net'
+
+# Form styles
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -70,7 +70,7 @@ def contact(request):
         'title' : 'Contact'
     }
 
-    return render(request,'rental/contact.html',content)
+    return render(request,'contactapp/contact.html',content)
 
 def pie_data(request):
     """ JSON API """
