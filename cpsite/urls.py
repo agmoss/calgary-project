@@ -19,5 +19,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path("", include("rental.urls")),
+    path('mail/', include('sendemail.urls')),
     
 ]

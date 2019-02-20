@@ -28,8 +28,9 @@ def config():
     db_default = config['default']
     db_data = config['rental_data']
     secret_key = config['SECRET_KEY']
+    mg_api = config['mailgun']
 
-    return {"default" : db_default, "data" : db_data ,"key" : secret_key}
+    return {"default" : db_default, "data" : db_data ,"key" : secret_key,"mg_api": mg_api}
 
 CONFIGS= config()
 
@@ -40,7 +41,7 @@ CONFIGS= config()
 SECRET_KEY = CONFIGS['key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost', 
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'corsheaders', # CORS headers
     'django.contrib.staticfiles',
+    'sendemail.apps.SendemailConfig', # Email
     'rental',
 ]
 
@@ -81,7 +83,7 @@ ROOT_URLCONF = 'cpsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,3 +148,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+MAILGUN_ACCESS_KEY = CONFIGS['mg_api']
+MAILGUN_SERVER_NAME = 'mg.calgaryproject.net'

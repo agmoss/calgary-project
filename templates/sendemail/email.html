@@ -1,0 +1,22 @@
+{% extends "rental/layout.html"%}
+{% block content %}
+
+<div id = "header" class = "container text-center">
+  <h1>Contact The Author</h1>
+<div>
+
+  <div class = "container text-center">
+
+      <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <div class="form-actions">
+            <button type="submit">Send</button>
+          </div>
+      </form>
+
+  </div>
+
+
+
+{% endblock content %}
