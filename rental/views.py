@@ -142,7 +142,7 @@ def map_data(request):
 
     data = list(
         RentalData.objects.using('rental_data')
-        .values('latitude','longitude','price','_type')
+        .values('latitude','longitude','price','_type','address','sq_feet')
         .filter(position = 'active')
         )
 
