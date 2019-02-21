@@ -16,6 +16,8 @@ function arrayToGeoJson(data){
             properties:{
                 price : point.price,
                 type : point._type,
+                address : point.address,
+                sq_feet : point.sq_feet,
 
             }
 
