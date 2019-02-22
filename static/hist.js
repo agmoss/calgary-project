@@ -1,17 +1,21 @@
 Plotly.d3.json(domainName + 'api/box_data', function(data){
 
-    var allTypeNames = [] ;   
-    var allQuadrant = [] ;
+    var allTypeNames = [];   
+    var allQuadrant = [];
     var allPrice = []; 
+
     var listofTypes = []; // uniuque
+    var listofQuadrants = []; // uniuque
+
     var currentSelection;
-    //var currentQuadrant = []; // Data on current selection
+
+    var currentQuadrant = []; // Data on current selection
     var currentPrice = []; // Data on current selection 
 
     data.forEach(function(item){
 
         allTypeNames.push(item._type)
-        //allQuadrant.push(item.quadrant);
+        allQuadrant.push(item.quadrant);
         allPrice.push(item.price);
 
     });
@@ -22,29 +26,42 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
             listofTypes.push(allTypeNames[i]);
         }
     }
-   
-    // Gets current selection
-    function getTypeData(chosenItem) {
-        //currentQuadrant = [];
-        currentPrice = [];
-        for (var i = 0 ; i < allTypeNames.length ; i++){
-            if ( allTypeNames[i] === chosenItem ) {
-                //currentQuadrant.push(allQuadrant[i]);
-                currentPrice.push(allPrice[i]);
-            }
+
+    // Makes things uniuque
+    for (var i = 0; i < allQuadrant.length; i++ ){ 
+        if (listofQuadrants.indexOf(allQuadrant[i]) === -1 ){
+            listofQuadrants.push(allQuadrant[i]);
         }
-    };
+    }
+   
+        // Gets current selection
+        function getTypeData(chosenType, chosenQuadrant) {
+            //currentQuadrant = [];
+            currentPrice = [];
+            for (var i = 0 ; i < allTypeNames.length ; i++){
+                if (allTypeNames[i] === chosenType) {
+                    //currentQuadrant.push(allQuadrant[i]);
+                    //currentPrice.push(allPrice[i]);
+
+                    if (allQuadrant[i] === chosenQuadrant ) {
+                        //currentQuadrant.push(allQuadrant[i]);
+                        currentPrice.push(allPrice[i]);
+                    }
+                }
+            }
+        };
 
     // Default 
-    setPlot('Apartment');
+    setPlot('Apartment','SW');
 
     // Actual plotting function 
-    function setPlot(chosenItem) {
-        getTypeData(chosenItem);
+    function setPlot(chosenType, chosenQuadrant) {
+        getTypeData(chosenType,chosenQuadrant);
 
         let trace1 = {
-            x: filterOutliers(currentPrice),
-    
+            //x: filterOutliers(currentPrice),
+
+            x: currentPrice,
     
             marker: {
                 color: colorScheme.primary},
@@ -101,8 +118,9 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
         Plotly.newPlot('distplotdiv', data, layout,{displayModeBar: false});
     };
 
-    var innerContainer = document.querySelector('[data-num="3"'),
-        itemSelector = innerContainer.querySelector('.selection');
+    var innerContainer = document.querySelector('[data-num="3"'),itemSelector = innerContainer.querySelector('.selection');
+
+    var innerContainer2 = document.querySelector('[data-num="10"'),itemSelector2 = innerContainer2.querySelector('.selection');
 
     function assignOptions(textArray, selector) {
         for (var i = 0; i < textArray.length;  i++) {
@@ -113,14 +131,17 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
     }
 
     assignOptions(listofTypes, itemSelector);
+    assignOptions(listofQuadrants, itemSelector2);
 
     function updateSelection(){
-        setPlot(itemSelector.value);
+        setPlot(itemSelector.value,itemSelector2.value);
     }
 
     itemSelector.addEventListener('change', updateSelection, false);
+    itemSelector2.addEventListener('change', updateSelection, false);
 
     // Set the default selection ddl value
     itemSelector.value = "Apartment";
+    itemSelector2.value = "SW";
 
 });

@@ -85,6 +85,7 @@ def pie_data(request):
         )
 
     return JsonResponse(data, safe=False)  
+
 def scatter_data(request):
     """ JSON API """
 
@@ -162,6 +163,38 @@ def corr_data(request):
             )
         )
 
+
+    # Conditionally replace quadrant names
+    df.loc[df['quadrant'] == '', 'quadrant'] = "Unspecified"
+    df.loc[(df['quadrant'] == 'Inner-City||SW') | (df['quadrant'] == 'SW||Inner-City') , 'quadrant'] = "SW-Central"
+    df.loc[(df['quadrant'] == 'Inner-City||NW') | (df['quadrant'] == 'NW||Inner-City') , 'quadrant'] = "NW-Central"
+    df.loc[(df['quadrant'] == 'Inner-City||SE') | (df['quadrant'] == 'SE||Inner-City') , 'quadrant'] = "SE-Central"
+    df.loc[(df['quadrant'] == 'Inner-City||NE') | (df['quadrant'] == 'NE||Inner-City') , 'quadrant'] = "NE-Central"
+
+    # One hot encoding of quadrants
+    df['quadrant'] = pd.Categorical(df['quadrant'])
+
+    dfDummies = pd.get_dummies(df['quadrant'], prefix = 'Quadrant')
+
+    df = pd.concat([df, dfDummies], axis=1)
+
+
+    # One hot encoding of type
+    df['_type'] = pd.Categorical(df['_type'])
+
+    dfDummies = pd.get_dummies(df['_type'], prefix = 'Type')
+
+    df = pd.concat([df, dfDummies], axis=1)
+
+    # One hot encoding of community
+
+    #df['community'] = pd.Categorical(df['_type'])
+
+    #dfDummies = pd.get_dummies(df['_type'], prefix = 'type')
+
+    #df = pd.concat([df, dfDummies], axis=1)
+
+
     corr = df.corr()
     z = corr.values.tolist()
     x = corr.columns.tolist()
@@ -213,3 +246,18 @@ def ts_data(request):
     from django.core.serializers import serialize
 
     return JsonResponse(flat, safe=False)
+
+
+def sqfoor_data(request):
+    """ JSON API """
+
+    # GROUP BY
+    data = list(
+        RentalData.objects.using('rental_data')
+        .values('community','_type')
+        .annotate(Avg('price'),dcount=Count('community')) # For filtering
+        .order_by('-price__avg')
+        .filter(position = 'active',dcount__gte = 10)             
+        )
+
+    return JsonResponse(data, safe=False) 

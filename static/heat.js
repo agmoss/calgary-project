@@ -45,7 +45,17 @@ Plotly.d3.json(domainName + 'api/corr_data', function(error,data){
         plot_bgcolor:customPlotLayout.background.plotBackgroundColor,
         paper_bgcolor:customPlotLayout.background.paperBackgroundColor,
 
-        autosize : true, // Important for responsiveness
+        autosize : true, 
+
+        margin: {
+          l: 150,
+          r: 50,
+          b: 50,
+          t: 150,
+          pad: 2
+        },
+
+
 
       };
 
