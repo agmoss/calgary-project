@@ -67,7 +67,7 @@
             <div class = "plotdiv" id="distplotdiv"></div>
             <div class="control-row">Type: <select class="selection"></select></div>
             <div data-num="10">
-              <div class="control-row">Type: <select class="selection"></select></div>
+              <div class="control-row">Quadrant: <select class="selection"></select></div>
             </div>
           </div>
         </div>
@@ -87,9 +87,6 @@
       </div>
     </div>
   </div>
-
-
-
 
   <script>
   
@@ -112,17 +109,11 @@
 
   <script src="https://rentalcontent.azureedge.net/staticcontent/line.js" type = "text/javascript"></script> 
 
-  <!-- <script src="https://rentalcontent.azureedge.net/staticcontent/hist.js" type = "text/javascript"></script>  -->
+  <script src="https://rentalcontent.azureedge.net/staticcontent/hist.js" type = "text/javascript"></script>  
   
-  {% load static %}
-  <script type="text/javascript" src="{% static 'hist.js' %}"></script>
-
   <script src="https://rentalcontent.azureedge.net/staticcontent/box.js" type = "text/javascript"></script> 
 
-  <!-- <script src="https://rentalcontent.azureedge.net/staticcontent/heat.js" type = "text/javascript"></script>   -->
-
-  {% load static %}
-  <script type="text/javascript" src="{% static 'heat.js' %}"></script>
+  <script src="https://rentalcontent.azureedge.net/staticcontent/heat.js" type = "text/javascript"></script>  
 
 
 {% endblock content %}

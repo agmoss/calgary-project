@@ -163,7 +163,6 @@ def corr_data(request):
             )
         )
 
-
     # Conditionally replace quadrant names
     df.loc[df['quadrant'] == '', 'quadrant'] = "Unspecified"
     df.loc[(df['quadrant'] == 'Inner-City||SW') | (df['quadrant'] == 'SW||Inner-City') , 'quadrant'] = "SW-Central"
@@ -186,14 +185,6 @@ def corr_data(request):
 
     df = pd.concat([df, dfDummies], axis=1)
 
-    # One hot encoding of community
-
-    #df['community'] = pd.Categorical(df['_type'])
-
-    #dfDummies = pd.get_dummies(df['_type'], prefix = 'type')
-
-    #df = pd.concat([df, dfDummies], axis=1)
-
 
     corr = df.corr()
     z = corr.values.tolist()
@@ -210,7 +201,7 @@ def corr_data(request):
 
 
 def ts_data(request):
-    """ JSON API """
+    """ JSON API TODO: add filtering by quadrant """
 
     df = pd.DataFrame(
         list(
@@ -219,8 +210,6 @@ def ts_data(request):
             .filter(position = 'active')
         )
     )
-
-    df = df[df.price < df.price.quantile(.90)]
 
     dfList = []
 
@@ -237,6 +226,8 @@ def ts_data(request):
 
     df = pd.concat(dfList, axis=1)
 
+    print(df.head())
+
     df = df[['Townhouse', 'House', 'Duplex', 'Apartment','Main Floor', 'Condo', 'Shared']]
 
     df = df.dropna()
@@ -246,18 +237,3 @@ def ts_data(request):
     from django.core.serializers import serialize
 
     return JsonResponse(flat, safe=False)
-
-
-def sqfoor_data(request):
-    """ JSON API """
-
-    # GROUP BY
-    data = list(
-        RentalData.objects.using('rental_data')
-        .values('community','_type')
-        .annotate(Avg('price'),dcount=Count('community')) # For filtering
-        .order_by('-price__avg')
-        .filter(position = 'active',dcount__gte = 10)             
-        )
-
-    return JsonResponse(data, safe=False) 

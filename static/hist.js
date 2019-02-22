@@ -7,9 +7,6 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
     var listofTypes = []; // uniuque
     var listofQuadrants = []; // uniuque
 
-    var currentSelection;
-
-    var currentQuadrant = []; // Data on current selection
     var currentPrice = []; // Data on current selection 
 
     data.forEach(function(item){
@@ -36,15 +33,11 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
    
         // Gets current selection
         function getTypeData(chosenType, chosenQuadrant) {
-            //currentQuadrant = [];
             currentPrice = [];
             for (var i = 0 ; i < allTypeNames.length ; i++){
                 if (allTypeNames[i] === chosenType) {
-                    //currentQuadrant.push(allQuadrant[i]);
-                    //currentPrice.push(allPrice[i]);
 
                     if (allQuadrant[i] === chosenQuadrant ) {
-                        //currentQuadrant.push(allQuadrant[i]);
                         currentPrice.push(allPrice[i]);
                     }
                 }
@@ -59,7 +52,6 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
         getTypeData(chosenType,chosenQuadrant);
 
         let trace1 = {
-            //x: filterOutliers(currentPrice),
 
             x: currentPrice,
     
