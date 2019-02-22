@@ -85,6 +85,7 @@ def pie_data(request):
         )
 
     return JsonResponse(data, safe=False)  
+
 def scatter_data(request):
     """ JSON API """
 
@@ -162,6 +163,29 @@ def corr_data(request):
             )
         )
 
+    # Conditionally replace quadrant names
+    df.loc[df['quadrant'] == '', 'quadrant'] = "Unspecified"
+    df.loc[(df['quadrant'] == 'Inner-City||SW') | (df['quadrant'] == 'SW||Inner-City') , 'quadrant'] = "SW-Central"
+    df.loc[(df['quadrant'] == 'Inner-City||NW') | (df['quadrant'] == 'NW||Inner-City') , 'quadrant'] = "NW-Central"
+    df.loc[(df['quadrant'] == 'Inner-City||SE') | (df['quadrant'] == 'SE||Inner-City') , 'quadrant'] = "SE-Central"
+    df.loc[(df['quadrant'] == 'Inner-City||NE') | (df['quadrant'] == 'NE||Inner-City') , 'quadrant'] = "NE-Central"
+
+    # One hot encoding of quadrants
+    df['quadrant'] = pd.Categorical(df['quadrant'])
+
+    dfDummies = pd.get_dummies(df['quadrant'], prefix = 'Quadrant')
+
+    df = pd.concat([df, dfDummies], axis=1)
+
+
+    # One hot encoding of type
+    df['_type'] = pd.Categorical(df['_type'])
+
+    dfDummies = pd.get_dummies(df['_type'], prefix = 'Type')
+
+    df = pd.concat([df, dfDummies], axis=1)
+
+
     corr = df.corr()
     z = corr.values.tolist()
     x = corr.columns.tolist()
@@ -177,7 +201,7 @@ def corr_data(request):
 
 
 def ts_data(request):
-    """ JSON API """
+    """ JSON API TODO: add filtering by quadrant """
 
     df = pd.DataFrame(
         list(
@@ -186,8 +210,6 @@ def ts_data(request):
             .filter(position = 'active')
         )
     )
-
-    df = df[df.price < df.price.quantile(.90)]
 
     dfList = []
 
@@ -203,6 +225,8 @@ def ts_data(request):
         dfList.append(agg)  
 
     df = pd.concat(dfList, axis=1)
+
+    print(df.head())
 
     df = df[['Townhouse', 'House', 'Duplex', 'Apartment','Main Floor', 'Condo', 'Shared']]
 
