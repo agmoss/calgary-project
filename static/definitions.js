@@ -18,4 +18,5 @@ var colorScheme = {
     primary :"rgba(255, 72, 0, 0.808)"
 }
 
-var domainName = "https://calgaryproject.net/"
+//var domainName = "https://calgaryproject.net/"
+var domainName = "http://127.0.0.1:8000/";

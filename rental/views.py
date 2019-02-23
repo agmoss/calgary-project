@@ -64,13 +64,13 @@ def map(request):
 
     return render(request,'rental/map.html',content)
 
-def contact(request):
+def license(request):
 
     content = {
-        'title' : 'Contact'
+        'title' : 'License'
     }
 
-    return render(request,'contactapp/contact.html',content)
+    return render(request,'rental/license.html',content)
 
 def pie_data(request):
     """ JSON API """
@@ -86,7 +86,7 @@ def pie_data(request):
 
     return JsonResponse(data, safe=False)  
 
-def scatter_data(request):
+def bar_data(request):
     """ JSON API """
 
     # GROUP BY
@@ -237,3 +237,14 @@ def ts_data(request):
     from django.core.serializers import serialize
 
     return JsonResponse(flat, safe=False)
+
+def scatter_data(request):
+    """ JSON API """
+
+    # GROUP BY
+    data = list(
+        RentalData.objects.using('rental_data')
+        .values('community','price','sq_feet')          
+        )
+
+    return JsonResponse(data, safe=False) 
