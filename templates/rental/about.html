@@ -8,7 +8,6 @@
     </div>
 
     <div class = "row">
-
         <div class = col-3>
 
         </div>
@@ -16,13 +15,80 @@
             <div class = "col-6 ">
                 <h4 class ="text-center">
                     A free and open source tool for rental property analysis!
-                </h4>                       
+                </h4>                        
 
-                </br>
-                </br>
-                </br>
-                </br>
-            
+                <div class = "container-fluid mt-5">    
+                    <div class = "row">
+                        <div class = "col-12">
+                            <p>
+                                The Calgary Project consists of two independent software repositories, 
+                                one for data collection and one for the analytical web application. 
+                            </p>
+                            <p>
+                                The data collection repository is an ETL pipeline written in Python with a MySQL backend. 
+                                The web application is built with the Django framework and employs JavaScript for graphics and interactivity. 
+                                Both repositories are dockerized and run in Microsoft Azure. The project encompasses the principles of CI/CD.                      
+                            </p>                                    
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "container-fluid mt-5">
+                    <h2>
+                        Data Collection
+                    </h2>
+                    <div class = "row">
+                        <div class = "col-12 mt-3">
+                            <p>                   
+                                Rentfaster.ca houses individual rental listings for major cities in Canada. These listings are 
+                                transactional records containing features such as price, location, availability, date, square feet etc. 
+                                The user of Rentfaster.ca has the option to filter on these features to narrow their search to a set of preferences.
+                                A specific listing can then be rented by the user right on the webpage.
+                            </p>
+                            <p>
+                                
+                                While this is a great service for prospective renters, there is little ability to gain insight on the rental
+                                market as a whole. Calgary lacks a free and accessible service for analyzing the health and status of the rental market.
+                                The Calgary Project aims to fulfill this absence by democratizing an understanding of the rental market for all.
+                                Rental listing data is collected daily and examined for duplicate entries, inconsistencies, and formatting errors.
+                                Additionally, previously collected listings are cross referenced with new listings and archived to create a 
+                                timeline of historical data.
+                            </p>    
+                            <p>
+                                
+                                All listings go through a rigorous engineering process before being stored persistently in a format
+                                amenable to analytical queries. The means of collection and storage allow for advanced analysis including 
+                                time series, supervised and unsupervised learning, spatial analysis, clustering, and forecasting. 
+                            </p>                                  
+                        </div>       
+                    </div>
+                </div>
+
+                <div class = "container-fluid mt-5">
+                    <h2>
+                        Interactive Web Application
+                    </h2>             
+                    <div class = "row">
+                        <div class = "col-12 mt-3">
+                                <p>
+                    
+                                    Data for the web application is populated from the data collection repository. 
+                                    In its current state, the web app is a proof of concept and serves as a starting point for
+                                    answering some high level questions about the Calgary rental market. Exploratory visuals 
+                                    offer insight into the rental market by community, property type, amenities offered, and
+                                    historical time period. The interactivity of the visuals allow for custom ad hoc queries 
+                                    on the latest data. New insights and changes to the market can be observed and analyzed as they happen. 
+                                </p>
+
+                                <p>
+                                    The web app is under active development and is currently in beta stage. New analytical features that incorporate
+                                    machine learning and forecasting are currently being developed. If you are using this service and you have an idea 
+                                    for a feature, please leave a comment on the contact page or submit a pull request!
+                                </p>                                   
+                            </div>           
+                    </div>   
+                </div>        
+        
             </br>
             </br>
             </br>
@@ -33,10 +99,7 @@
             
         </div>
 
-    </div>
-    
+    </div>    
 </div>
-  
-
 
 {% endblock content %}
