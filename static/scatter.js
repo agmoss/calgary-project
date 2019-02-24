@@ -13,17 +13,15 @@ Plotly.d3.json(domainName + 'api/scatter_data', function(data){
 
      data.forEach(function(item){
 
-         if(item.price < 10000 && item.sq_feet < 5000){
-
+         if( 1 < item.price &&  item.price < 10000 && 1 < item.sq_feet && item.sq_feet < 5000){
              allprice.push(item.price);
              allsq_feet.push(item.sq_feet);
              allCommunity.push(item.community);
-
          }
 
      });
 
-         // Makes things uniuque
+    // Makes things uniuque
     for (var i = 0; i < allCommunity.length; i++ ){ 
         if (listOfCommunity.indexOf(allCommunity[i]) === -1 ){
             listOfCommunity.push(allCommunity[i]);
@@ -52,38 +50,79 @@ Plotly.d3.json(domainName + 'api/scatter_data', function(data){
     function setPlot(chosenItem) {
         getCommunityData(chosenItem);
 
-        var trace1 = {
+        // var trace1 = {
     
-            x: currentPrice,
-            y: currentSqFeet,
-            mode: 'markers',
-            type: 'histogram2dcontour',
-            // name: 'Team A',
-            // text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
-            marker: { size: 12 }
-        };
+        //     x: currentPrice,
+        //     y: currentSqFeet,
+        //     mode: 'markers',
+        //     type: 'histogram2dcontour',
+        //     // name: '',
+        //     // text: [],
+        //     //marker: { size: 12 }
+        // };
 
         var trace2 = {
             x: currentPrice,
             y: currentSqFeet,
             mode: 'markers',
-            name: 'points',
             marker: {
-            color: 'rgb(102,0,0)',
-            size: 2,
-            opacity: 0.4
-            },
+            size: 4,
+            opacity: 1,
+             },
             type: 'scatter'
         };
         
-        var data = [trace1,trace2];
+        var data = [trace2];
         
         var layout = {
 
-            title:'Data Labels Hover'
-        };
+            paper_bgcolor:"rgb(22, 22, 22)",
+            plot_bgcolor:"rgb(22, 22, 22)",
+            
+
+            yaxis: {
+                title: {
+                  text: 'Square Feet',
+                  font: {
+                    size: customPlotLayout.axis.axisTitleSize,
+                    color: customPlotLayout.axis.axisColor,
+                  }
+                },
+                tickcolor: customPlotLayout.axis.axisColor,
+                tickfont: {
+                    size: 14,
+                    color: customPlotLayout.axis.axisColor
+                  },
+                  automargin : true,
+              },
+              xaxis: {
+                title: {
+                  text: 'Rent per Month',
+                  font: {
+                    size: customPlotLayout.axis.axisTitleSize,
+                    color: customPlotLayout.axis.axisColor
+                  }
+                },
+                tickcolor: customPlotLayout.axis.axisColor,
+                tickfont: {
+                    size: customPlotLayout.axis.axisTickSize,
+                    color: customPlotLayout.axis.axisColor
+                  },
+                  automargin : true,
+              },
+    
+            margin: {
+                l: 10,
+                r: 10,
+                b: 50,
+                t: 1,
+                pad: 4
+              },
+
+            autosize : true, // Important for responsiveness
+        }
         
-        Plotly.newPlot('scatterplotdiv', data, layout);
+        Plotly.newPlot('scatterplotdiv', data, layout,{displayModeBar: false},{responsive: true});
 
     };
 

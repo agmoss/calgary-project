@@ -54,10 +54,9 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
         let trace1 = {
 
             x: currentPrice,
-    
-            marker: {
-                color: colorScheme.primary},
-                type:'histogram',
+            opacity: 0.9,
+            type:'histogram',
+            
             }
     
             let layout = {

@@ -47,9 +47,6 @@ Plotly.d3.json(domainName + 'api/bar_data', function(data){
             y: currentCommunity,
             mode: 'markers',
             type: 'bar',
-            marker: {
-                color: colorScheme.primary,
-            }
         };
 
         var data = [trace1];

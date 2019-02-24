@@ -82,10 +82,11 @@
         <div class="card-body">
           <div data-num="7"> 
             <div class = "plotdiv" id="scatterplotdiv"></div>
-            <div class="control-row">Property Type: <select class="selection"></select></div>
+            <div class="control-row">Community: <select class="selection"></select></div>
+            <div> - </div>
           </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM **Not enough data has been collected for an analysis of some distributions**</div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
     </div>
    
@@ -97,9 +98,7 @@
         <div class="card-header">Correlation Map</div>
         <div class="card-body ">
           <div class = "plotdiv fullsquare" id = "heatdiv"></div> 
-          </div>
         </div>
-
       <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
     </div>
@@ -120,16 +119,10 @@
 
   <script src="https://rentalcontent.azureedge.net/staticcontent/onResize.js" type = "text/javascript"></script>
 
-  <!-- <script src="https://rentalcontent.azureedge.net/staticcontent/bar.js" type = "text/javascript"></script>    -->
+  <script src="https://rentalcontent.azureedge.net/staticcontent/bar.js" type = "text/javascript"></script> 
 
-  {% load static %}
-  <script type = "text/javascript" src="{% static 'bar.js' %}"></script>
+  <script src="https://rentalcontent.azureedge.net/staticcontent/scatter.js" type = "text/javascript"></script>  
 
-  {% load static %}
-  <script type = "text/javascript" src="{% static 'scatter.js' %}"></script>
-
-
-  
   <script src="https://rentalcontent.azureedge.net/staticcontent/pie.js" type = "text/javascript"></script>  
 
   <script src="https://rentalcontent.azureedge.net/staticcontent/line.js" type = "text/javascript"></script> 
@@ -138,7 +131,7 @@
   
   <script src="https://rentalcontent.azureedge.net/staticcontent/box.js" type = "text/javascript"></script> 
 
-  <script src="https://rentalcontent.azureedge.net/staticcontent/heat.js" type = "text/javascript"></script>  
+  <script src="https://rentalcontent.azureedge.net/staticcontent/heat.js" type = "text/javascript"></script>   
 
 
 {% endblock content %}

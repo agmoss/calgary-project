@@ -226,8 +226,6 @@ def ts_data(request):
 
     df = pd.concat(dfList, axis=1)
 
-    print(df.head())
-
     df = df[['Townhouse', 'House', 'Duplex', 'Apartment','Main Floor', 'Condo', 'Shared']]
 
     df = df.dropna()

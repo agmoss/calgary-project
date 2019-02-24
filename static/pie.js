@@ -47,6 +47,7 @@ Plotly.d3.json(domainName + 'api/pie_data', function(data){
             values: currentdcount,           
             type:'pie',
             textposition: 'inside',
+            opacity: 0.9,
         };
 
         var data = [trace1];
