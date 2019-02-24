@@ -245,3 +245,9 @@ a.article:hover {
 .aboutparagraph{
     padding: 5%
 }
+
+.leaflet-popup-content-wrapper {
+    background-color: #000;
+    color: white;     
+
+}

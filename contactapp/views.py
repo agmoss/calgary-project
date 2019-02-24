@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
-# sendemail/views.py
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -23,4 +21,4 @@ def emailView(request):
 
             return render(request, "contactapp/contact.html", {'form': form,'message':'Message has been sent! Thank you.'}) 
 
-    return render(request, "contactapp/contact.html", {'form': form})
+    return render(request, "contactapp/contact.html", {'form': form , 'title': 'Contact'})

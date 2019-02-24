@@ -1,4 +1,4 @@
-Plotly.d3.json(domainName + 'api/scatter_data', function(data){
+Plotly.d3.json(domainName + 'api/bar_data', function(data){
 
     var allTypeNames = [] ;   
     var allprice__avg = [] ;
@@ -47,9 +47,6 @@ Plotly.d3.json(domainName + 'api/scatter_data', function(data){
             y: currentCommunity,
             mode: 'markers',
             type: 'bar',
-            marker: {
-                color: colorScheme.primary,
-            }
         };
 
         var data = [trace1];
@@ -103,7 +100,7 @@ Plotly.d3.json(domainName + 'api/scatter_data', function(data){
             autosize : true, // Important for responsiveness
         }
 
-        Plotly.newPlot("scatterplotdiv", data, layout,{displayModeBar: false},{responsive: true});
+        Plotly.newPlot("barplotdiv", data, layout,{displayModeBar: false},{responsive: true});
 
     };
 

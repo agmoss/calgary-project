@@ -46,11 +46,9 @@ Plotly.d3.json(domainName + 'api/box_data', function(data){
         var trace1 = {
             x: currentQuadrant,
             y: filterOutliers(currentPrice),
-            mode: 'markers',
-    
-            marker: {
-                color: colorScheme.primary},
-                type:'box',
+            mode: 'markers',  
+            type:'box',
+            
             }
     
             let layout = {

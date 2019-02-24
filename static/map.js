@@ -8,9 +8,18 @@ Plotly.d3.json(domainName + 'api/map_data', function(data){
 
     var listofTypes = []; // uniuque
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      })
+
 
     data.forEach(function(item){
 
+        item["price"] = formatter.format(item["price"]);
+        item["sq_feet"] = item["sq_feet"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        
         allTypeNames.push(item._type);
         allData.push(item)
 
@@ -29,7 +38,6 @@ Plotly.d3.json(domainName + 'api/map_data', function(data){
         for (var i = 0 ; i < allTypeNames.length ; i++){
             if ( allTypeNames[i] === chosenItem ) {
                 currentData.push(allData[i]);
-
             }
         }
     };
