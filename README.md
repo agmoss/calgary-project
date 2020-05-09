@@ -1,8 +1,6 @@
 # The Calgary Project
 >A cloud native analysis service for the rental property market.
 
->https://calgaryproject.net
-
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 
@@ -18,12 +16,6 @@ Data collection for this project is housed at the [Rental Data ETL](https://gith
 
 ![example](screenshot.png)
 
-
-# Development Status
-
-This project implements the principles of CI & CD. The latest development is housed at: https://calgaryproject.net
-
-This is a work in progress and development is ongoing. 
 
 ## Built With
 
