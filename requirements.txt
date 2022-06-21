@@ -4,5 +4,5 @@ django-mailgun==0.9.1
 django-crispy-forms==1.7.2
 mysqlclient==1.4.1
 pytz==2018.9
-numpy==1.16.1
+numpy==1.22.0
 pandas==0.23.4
